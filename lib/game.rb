@@ -42,6 +42,36 @@ class Game
     return [row_input.to_i, col_input.to_i]
   end
 
+  def play()
+    turn = 0
+    while @grid.winner == nil
+
+      puts()
+
+      print_grid()
+
+      #decide who's turn it is
+      if turn % 2 == 0
+        current = @players[:X]
+      else
+        current = @players[:O]
+      end
+
+      puts("#{current.get_name} to play")
+
+      #get player's move
+      current_move = choose_move()
+
+      #make move
+      make_move(current, current_move[0], current_move[1])
+
+      #increment turn
+      turn += 1
+    end
+
+    puts("\n#{@players[@grid.winner().to_sym].get_name} wins!")
+  end
+
   def get_players()
     return @players
   end
