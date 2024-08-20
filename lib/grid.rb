@@ -24,4 +24,28 @@ class Grid
     end
     return grid_string
   end
+
+  def winner()
+    #check rows and cols
+    0.upto(2) do |i|
+      #rows first
+      if (get_cell_value(i, 0) == get_cell_value(i, 1)) and (get_cell_value(i, 0) == get_cell_value(i, 2)) and (get_cell_value(i, 0) != "-")
+        return get_cell_value(i, 0)
+      end
+      if (get_cell_value(0, i) == get_cell_value(1, i)) and (get_cell_value(0, i) == get_cell_value(2, i)) and (get_cell_value(0, i) != "-")
+        return get_cell_value(0, i)
+      end
+    end
+
+    #check diagonals
+    if (get_cell_value(0, 0) == get_cell_value(1, 1)) and (get_cell_value(0, 0) == get_cell_value(2, 2)) and (get_cell_value(0, 0) != "-")
+      return get_cell_value(0, 0)
+    end
+    if (get_cell_value(2, 0) == get_cell_value(1, 1)) and (get_cell_value(2, 0) == get_cell_value(0, 2)) and (get_cell_value(0, 2) != "-")
+      return get_cell_value(0, 2)
+    end
+
+    #no winner found
+    return nil
+  end
 end

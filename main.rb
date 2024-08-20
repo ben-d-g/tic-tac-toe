@@ -3,14 +3,15 @@ require_relative("lib/grid")
 
 grid = Grid.new()
 
-print(grid.get_grid_string())
+print(grid.winner())
 
+grid.set_cell_value(0, 0, "O")
 grid.set_cell_value(0, 1, "X")
-
-print(grid.get_grid_string())
-
 grid.set_cell_value(0, 2, "O")
+grid.set_cell_value(1, 0, "X")
+grid.set_cell_value(1, 1, "O")
+grid.set_cell_value(2, 0, "X")
+grid.set_cell_value(2, 0, "O")
 
-print(grid.get_grid_string())
 
-print(grid.get_cell_value(2,2))
+print(grid.winner())
