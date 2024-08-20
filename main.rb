@@ -1,7 +1,9 @@
-require_relative("lib/cell")
-require_relative("lib/grid")
-require_relative("lib/player")
-require_relative("lib/game")
+# frozen_string_literal: true
 
-game = Game.new()
-game.play()
+require_relative('lib/cell')
+require_relative('lib/grid')
+require_relative('lib/player')
+require_relative('lib/game')
+
+game = Game.new
+game.play
