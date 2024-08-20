@@ -25,6 +25,16 @@ class Grid
     return grid_string
   end
 
+  def full()
+    grid_flat = @grid.flatten
+    grid_flat.each do |cell|
+      if cell.get_value == "-"
+        return false
+      end
+    end
+    return true
+  end
+
   def winner()
     #check rows and cols
     0.upto(2) do |i|
@@ -43,6 +53,11 @@ class Grid
     end
     if (get_cell_value(2, 0) == get_cell_value(1, 1)) and (get_cell_value(2, 0) == get_cell_value(0, 2)) and (get_cell_value(0, 2) != "-")
       return get_cell_value(0, 2)
+    end
+
+    #its a draw
+    if full()
+      return "DRAW"
     end
 
     #no winner found

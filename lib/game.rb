@@ -3,6 +3,12 @@ require_relative("grid")
 
 class Game
   def initialize(player_1_name = "Player 1", player_2_name = "Player 2")
+    puts("Enter name >>")
+    player_1_name = gets.chomp
+    player_1_name = "Player 1" if player_1_name == ""
+    puts("Enter name >>")
+    player_2_name = gets.chomp
+    player_2_name = "Player 2" if player_2_name == ""
     @players = {X: Player.new("X", player_1_name), O: Player.new("O", player_2_name)}
     @grid = Grid.new()
   end
@@ -69,7 +75,11 @@ class Game
       turn += 1
     end
 
-    puts("\n#{@players[@grid.winner().to_sym].get_name} wins!")
+    if @grid.winner() == "DRAW"
+      puts("It's a draw!")
+    else
+      puts("\n#{@players[@grid.winner().to_sym].get_name} wins!")
+    end
   end
 
   def get_players()
